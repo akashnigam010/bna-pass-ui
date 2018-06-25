@@ -1,0 +1,28 @@
+<mat-nav-list class="nav-list">
+  <a>
+    <mat-card class="user-card align-center">
+      <div>
+        <img src="../assets/images/img_avatar.png"
+             style="height: 50px; width: 50px; border-radius: 50%;">
+      </div>
+      <div>
+        <h3 class="username">Himant</h3>
+        <p class="userrole">Admin</p>
+      </div>
+    </mat-card>
+  </a>
+  
+  <a>
+    <mat-card class="subheader">
+      SYSTEM CONFIG
+    </mat-card>
+  </a>
+  <a *ngFor="let navItem of navItemsSettings"
+     mat-list-item
+     routerLinkActive
+     #routerLinkActiveInstance="routerLinkActive"
+     [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+     [routerLink]="[navItem.route]">
+    <mat-icon>{{navItem.icon}}</mat-icon>&nbsp; {{navItem.name}}
+  </a>
+</mat-nav-list>

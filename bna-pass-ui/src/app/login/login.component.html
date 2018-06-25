@@ -1,3 +1,31 @@
-<p>
-  login works!
-</p>
+<div class="login-image">
+  <mat-card class="login-card"
+            #loginCard>
+    <mat-card-title>LOGIN</mat-card-title>
+    <mat-card-content>
+      <form class="form">
+        <mat-form-field class="full-width">
+          <input matInput
+                 placeholder="username"
+                 type="tabindex"
+                 [(ngModel)]="userLogin.username"
+                 name="username">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput
+                 placeholder="password"
+                 type="password"
+                 [(ngModel)]="userLogin.password"
+                 name="password">
+        </mat-form-field>
+      </form>
+      <p *ngIf="errorMessage" class="error-message">{{errorMessage}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button
+              color="primary"
+              class="action-button"
+              (click)="loginAsync()">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

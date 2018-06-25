@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {MatSnackBar} from '@angular/material';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  @ViewChild('sidenav') sidebar: any;
 
-  constructor() { }
+  sectionHeading = 'Section Heading';
 
-  ngOnInit() {
+  constructor() {}
+
+  ngOnInit() {}
+
+  toggleSidebar() {
+    if (this.sidebar) {
+      this.sidebar.toggle();
+    }
   }
-
 }

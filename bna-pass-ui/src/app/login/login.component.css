@@ -1,0 +1,29 @@
+.login-image{
+    background-image: url(/assets/images/progetto.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+   .login-card {
+    width: 20%;
+    top: 30%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .form {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .action-button {
+      width: 50%;
+  }
+  
+  .error-message{
+    color: red;
+  }

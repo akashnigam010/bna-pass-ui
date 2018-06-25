@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ViewChild } from '@angular/core';
+import { Login } from '../model';
+import { Router } from '@angular/router';
+import { LoginService } from '../service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  errorMessage: string = null;
+  userLogin: Login = {username: '', password: ''};
+
+  @ViewChild('loginCard', {read: ViewContainerRef}) container: ViewContainerRef;
+
+  constructor(private router: Router, private loginservice: LoginService) {}
 
   ngOnInit() {
+  }
+
+  async loginAsync() {
+
   }
 
 }

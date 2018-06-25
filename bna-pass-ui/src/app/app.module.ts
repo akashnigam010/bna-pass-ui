@@ -1,29 +1,33 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {NgModule} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastyModule} from 'ng2-toasty';
 
-
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { AppRoutingModule } from './/app-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { HttpProvider, WebApiProvider } from './provider';
-import { LoginService } from './service/login.service';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {LoginComponent} from './login/login.component';
+import {MaterialModule} from './material.module';
+import {HttpProvider, WebApiProvider} from './provider';
+import {LoginService} from './service/login.service';
+import {LayoutModule} from './layout/layout.module';
 
 const providers = [HttpProvider, WebApiProvider];
 const services = [LoginService];
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    DashboardComponent
-  ],
+  declarations: [AppComponent, LoginComponent, DashboardComponent],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    BrowserModule, BrowserAnimationsModule, NoopAnimationsModule, FormsModule,
+    ToastyModule.forRoot(), AppRoutingModule, ReactiveFormsModule, LayoutModule,
+    MaterialModule, HttpModule, HttpClientModule
   ],
   providers: [...providers, ...services],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

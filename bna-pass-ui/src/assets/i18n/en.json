@@ -1,0 +1,9 @@
+{
+  "HOME": {
+    "TITLE": "Hello Angular with ngx-translate!",
+    "SELECT": "Change language",
+    "PRIMARY":"Primary Details",
+    "Moveware":"Moveit Enlgish",
+    "WELCOME":"Welcome to Moveware"
+  }
+}

@@ -19,7 +19,9 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "assets/styles/styles.scss",
+        "assets/styles/custom-theme.scss",
+        "../node_modules/ng2-toasty/style.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
