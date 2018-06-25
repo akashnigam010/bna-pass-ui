@@ -14,13 +14,15 @@ import {MaterialModule} from './material.module';
 import {HttpProvider, WebApiProvider} from './provider';
 import {LoginService} from './service/login.service';
 import {LayoutModule} from './layout/layout.module';
+import { MembersComponent } from './members/members.component';
+import { AddMembershipComponent } from './add-membership/add-membership.component';
 
 const providers = [HttpProvider, WebApiProvider];
 const services = [LoginService];
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DashboardComponent],
+  declarations: [AppComponent, LoginComponent, DashboardComponent, MembersComponent, AddMembershipComponent],
   imports: [
     BrowserModule, BrowserAnimationsModule, NoopAnimationsModule, FormsModule,
     ToastyModule.forRoot(), AppRoutingModule, ReactiveFormsModule, LayoutModule,

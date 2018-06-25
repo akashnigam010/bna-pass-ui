@@ -1,19 +1,25 @@
 <div class="main-container">
   <mat-toolbar color="primary" class="topbar">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">
-        <img src="../assets/images/moveware.jpg" class="logo">
-      </a>
-    </div>
     <button mat-icon-button class="toggle-button" (click)="toggleSidebar()" value="sidebarclosed">
       <mat-icon>menu</mat-icon>
     </button>
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">
+        <img src="../assets/images/bananaa-white.svg" class="logo">
+      </a>
+    </div>
 
   </mat-toolbar>
   <mat-sidenav-container class="container">
     <mat-sidenav #sidenav mode="side" opened="true" class="sidenav">
       <app-sidebar></app-sidebar>
     </mat-sidenav>
+    <mat-sidenav-content class="page-wrapper">
+      <div class="page-content">
+        <router-outlet>
+        </router-outlet>
+      </div>
+    </mat-sidenav-content>
   </mat-sidenav-container>
   <!-- <ng2-toasty [position]="'top-right'"></ng2-toasty> -->
 </div>

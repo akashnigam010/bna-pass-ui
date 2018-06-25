@@ -9,23 +9,13 @@ import {Router} from '@angular/router';
 export class AppSidebarComponent implements OnInit {
   navItemsSettings = [
     {
-      name: 'Attribute Type',
-      route: 'attributetype',
+      name: 'Dashboard',
+      route: 'dashboard',
       icon: 'donut_large',
     },
     {
-      name: 'Entity Type',
-      route: 'entitytype',
-      icon: 'toll',
-    },
-    {
-      name: 'User Settings',
-      route: 'usersettings',
-      icon: 'settings',
-    },
-    {
-      name: 'Add Entity',
-      route: 'addentity',
+      name: 'Add Membership',
+      route: 'addMembership',
       icon: 'add_circle',
     }
   ];
