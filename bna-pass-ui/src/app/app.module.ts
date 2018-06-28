@@ -15,14 +15,15 @@ import {HttpProvider, WebApiProvider} from './provider';
 import {LoginService} from './service/login.service';
 import {LayoutModule} from './layout/layout.module';
 import { MembersComponent } from './members/members.component';
-import { AddMembershipComponent } from './add-membership/add-membership.component';
+import { MembershipComponent } from './membership/membership.component';
+import { MembershipService } from './service';
 
 const providers = [HttpProvider, WebApiProvider];
-const services = [LoginService];
+const services = [LoginService, MembershipService];
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DashboardComponent, MembersComponent, AddMembershipComponent],
+  declarations: [AppComponent, LoginComponent, DashboardComponent, MembersComponent, MembershipComponent],
   imports: [
     BrowserModule, BrowserAnimationsModule, NoopAnimationsModule, FormsModule,
     ToastyModule.forRoot(), AppRoutingModule, ReactiveFormsModule, LayoutModule,

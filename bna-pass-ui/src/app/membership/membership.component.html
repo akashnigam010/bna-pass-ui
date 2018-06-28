@@ -1,0 +1,160 @@
+<mat-accordion *ngIf="membership"> 
+  <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = false" (closed)="panelOpenState = true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <b>MEMBER DETAILS</b>
+      </mat-panel-title>
+      <mat-panel-description>
+          {{membership.member.firstName}}&nbsp;{{membership.member.lastName}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-list>
+      <mat-list-item>
+        <div class="left-div">
+          First Name
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="membership.member.firstName">
+          </mat-form-field>
+        </div>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="left-div">
+          Last Name
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="membership.member.lastName">
+          </mat-form-field>
+        </div>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="left-div">
+          Phone
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="membership.member.phone">
+          </mat-form-field>
+        </div>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="left-div">
+          Email
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="membership.member.email">
+          </mat-form-field>
+        </div>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="left-div">
+          Address
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="membership.member.address">
+          </mat-form-field>
+        </div>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="left-div">
+          Id Proof
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="membership.member.idProof">
+          </mat-form-field>
+        </div>
+      </mat-list-item>
+      <mat-list-item class="action-button">
+        <div class="left-div">
+          <button mat-raised-button color="primary" class="action-button" (click)="saveMember()">Save Member</button>
+        </div>
+      </mat-list-item>
+    </mat-list>
+
+  </mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <b>MEMBERSHIP</b>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-list>
+      <mat-list-item>
+        <div class="left-div">
+          Status
+        </div>
+        <div style="width: 30%;">
+          <mat-select [(value)]="membership.status">
+            <mat-option value="ACTIVE">ACTIVE</mat-option>
+            <mat-option value="BLOCKED">BLOCKED</mat-option>
+          </mat-select>
+        </div>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="left-div">
+          Description
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="membership.description">
+          </mat-form-field>
+        </div>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="left-div">
+          Start Date
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="membership.startDate">
+          </mat-form-field>
+        </div>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="left-div">
+          End Date
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="membership.endDate">
+          </mat-form-field>
+        </div>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="left-div">
+          Entries Per Day
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <input matInput type="number" [(ngModel)]="membership.entriesPerDay">
+          </mat-form-field>
+        </div>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="left-div">
+          Entry Day Type
+        </div>
+        <div style="width: 30%;">
+          <mat-select [(value)]="membership.dayType">
+            <mat-option value="ALL_DAYS">All Days</mat-option>
+            <mat-option value="WEEKDAYS">Weekdays</mat-option>
+            <mat-option value="WEEKENDS">Weekends</mat-option>
+          </mat-select>
+        </div>
+      </mat-list-item>
+      <mat-list-item class="action-button">
+        <div class="left-div">
+          <button mat-raised-button color="primary" class="action-button" (click)="saveMembership()">Save Membership</button>
+        </div>
+      </mat-list-item>
+    </mat-list>
+
+  </mat-expansion-panel>
+</mat-accordion>

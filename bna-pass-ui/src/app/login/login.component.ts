@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewContainerRef, ViewChild } from '@angular/core';
-import { Login } from '../model';
-import { Router } from '@angular/router';
-import { LoginService } from '../service';
+import {Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {Router} from '@angular/router';
+
+import {Login} from '../model';
+import {LoginService} from '../service';
+import { CONSTANTS } from '../util/constants';
 
 @Component({
   selector: 'app-login',
@@ -9,19 +11,25 @@ import { LoginService } from '../service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   errorMessage: string = null;
-  userLogin: Login = {username: '', password: ''};
+  userLogin: Login = {id: '', password: ''};
 
   @ViewChild('loginCard', {read: ViewContainerRef}) container: ViewContainerRef;
 
   constructor(private router: Router, private loginservice: LoginService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async loginAsync() {
-
+    // call login service
+    const loginResponse =
+        await this.loginservice.authenticate(this.userLogin).toPromise();
+    if (loginResponse.result) {
+      this.router.navigate(['/members']);
+      localStorage.setItem(CONSTANTS.USER, JSON.stringify(loginResponse));
+      this.errorMessage = null;
+    } else {
+      this.errorMessage = loginResponse.statusCodes.statusCode[0].description;
+    }
   }
-
 }

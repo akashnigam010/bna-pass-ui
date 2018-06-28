@@ -1,7 +1,11 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import {RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {map} from 'rxjs/operators';
+
+import {LoginResponse} from '../response/login.response';
+import {CONSTANTS} from '../util/constants';
 
 @Injectable()
 export class HttpProvider {
@@ -24,18 +28,27 @@ export class HttpProvider {
     return relativeUrl;
   }
 
-  public get<T>(relativeUrl: string, data?: any): Observable<T> {
+  public get<T>(relativeUrl: string, data?: any, secure: boolean = true):
+      Observable<T> {
     relativeUrl = this.formatUrl(relativeUrl);
-    return this.request<T>(relativeUrl, 'Get', data, false);
+    if (secure) {
+      return this.requestSecure<T>(relativeUrl, 'Get', data, false);
+    } else {
+      return this.request<T>(relativeUrl, 'Get', data, false);
+    }
   }
 
   public post<T>(
       relativeUrl: string, data: any, useRelativeUrl: boolean,
-      formUrlEncoded: boolean = false): Observable<T> {
+      formUrlEncoded: boolean = false, secure: boolean = true): Observable<T> {
     if (useRelativeUrl) {
       relativeUrl = this.formatUrl(relativeUrl);
     }
-    return this.request(relativeUrl, 'Post', data, formUrlEncoded);
+    if (secure) {
+      return this.requestSecure(relativeUrl, 'Post', data, formUrlEncoded);
+    } else {
+      return this.request(relativeUrl, 'Post', data, formUrlEncoded);
+    }
   }
 
   public postFile<T>(relativeUrl: string, formData: FormData): Observable<T> {
@@ -72,6 +85,31 @@ export class HttpProvider {
 
     return this.http
         .request(method, relativeUrl, {body: data, responseType: 'text'})
+        .pipe(map(res => {
+          if (!res) {
+            return <any>res;
+          }
+
+          return <T>JSON.parse(res);
+        }));
+  }
+
+  public requestSecure<T>(
+      relativeUrl: string, method: string, data?: any,
+      formatUrl: boolean = true): Observable<T> {
+    if (formatUrl) {
+      relativeUrl = this.formatUrl(relativeUrl);
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' +
+          JSON.parse(localStorage.getItem(CONSTANTS.USER)).accessToken
+    });
+
+    return this.http
+        .request(
+            method, relativeUrl,
+            {body: data, responseType: 'text', headers: headers})
         .pipe(map(res => {
           if (!res) {
             return <any>res;

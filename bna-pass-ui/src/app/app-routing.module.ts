@@ -5,18 +5,16 @@ import {RouterModule, Routes} from '@angular/router';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {LoginComponent} from './login/login.component';
 import {MembersComponent} from './members/members.component';
-import { AddMembershipComponent } from './add-membership/add-membership.component';
+import {MembershipComponent} from './membership/membership.component';
 
 export const AppRoutes: Routes = [
-  {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent}, {
-    path: 'dashboard',
+    path: '',
     component: DashboardComponent,
     children: [
-      {path: '', redirectTo: 'members', pathMatch: 'full'},
-      {path: 'dashboard', redirectTo: 'members', pathMatch: 'full'},
-      {path: 'addMembership', component: AddMembershipComponent},
-      {path: 'members', component: MembersComponent}
+      {path: 'members', component: MembersComponent},
+      {path: 'membership/:id', component: MembershipComponent},
+      {path: 'addmember', component: MembershipComponent}
     ]
   }
 ];

@@ -8,7 +8,9 @@
         <img src="../assets/images/bananaa-white.svg" class="logo">
       </a>
     </div>
-
+    <button mat-icon-button class="toggle-button" style="text-align: right;" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
   </mat-toolbar>
   <mat-sidenav-container class="container">
     <mat-sidenav #sidenav mode="side" opened="true" class="sidenav">
